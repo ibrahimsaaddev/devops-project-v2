@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibrahim Saad — Aspiring DevOps Engineer</title>
+<meta name="description" content="Ibrahim Saad — aspiring DevOps engineer. Linux, Bash, Python, AWS and Networking, building infrastructure from the ground up.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#top" class="nav__name">hima Saad</a>
+    <nav class="nav__links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#project">Project</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="{{ url_for('static', filename='assets/Ibrahim_Saad_CV.pdf') }}" target="_blank">Download CV</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <p class="kicker">Aspiring DevOps Engineer</p>
+        <h1 class="hero__title">Infrastructure is the<br>part people only<br>notice when it breaks.</h1>
+        <p class="hero__sub">I'm Ibrahim — a 23-year-old self-taught engineer from Alexandria, Egypt, learning to be the reason things <em>don't</em> break. Linux, Bash, Python, networking and AWS, applied to a real, working deployment.</p>
+        <div class="hero__ctas">
+          <a href="#project" class="btn btn--primary">See the project</a>
+          <a href="#contact" class="btn btn--outline">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero__photo">
+        <img src="{{ url_for('static', filename='assets/ibrahim-photo.jpeg') }}" alt="Ibrahim Photo">
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container about__inner">
+      <p class="kicker">About</p>
+      <div class="about__cols">
+        <p class="about__lead">From a business classroom to a Linux terminal — same instinct, different tools.</p>
+        <div class="about__body">
+          <p>I studied Business Administration at Alexandria University, on the Management Information Systems track — a mix of marketing, accounting, business ethics and organisational management, alongside an introduction to networking and programming. That mix is where I first noticed I cared less about the business case and more about the systems running underneath it.</p>
+          <p>Before graduating, I looked through most of the tech tracks available to MIS students before settling on DevOps. It's the one place where you're not just building one piece — you're responsible for the environment everything else runs in. That appealed to me immediately.</p>
+          <p>I applied to the ITI scholarship right after graduation and made it to the interview stage, but wasn't accepted. Instead of waiting for the next intake, I built my own path: Linux first, then Bash scripting, then networking fundamentals, then Python — each one chosen because a DevOps engineer actually needs it, not because a course told me to learn it.</p>
+          <p>On the cloud side, I started with the concepts behind VMware before moving to AWS, where I wanted hands-on practice before the theory — so I worked through AWS Cloud Quest, earned the Cloud Practitioner training badge, and later sat the official AWS Certified Cloud Practitioner exam.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <div class="container">
+      <p class="kicker">Skills</p>
+      <h2 class="section__title">What I work with</h2>
+      <div class="skills__grid">
+        <div class="skills__group">
+          <h3>Core</h3>
+          <ul class="tags">
+            <li>Linux</li><li>Bash Scripting</li><li>Python</li><li>Git</li><li>VS Code</li>
+          </ul>
+        </div>
+        <div class="skills__group">
+          <h3>Cloud — AWS</h3>
+          <ul class="tags">
+            <li>EC2</li><li>S3</li><li>IAM</li><li>VPC</li>
+          </ul>
+        </div>
+        <div class="skills__group">
+          <h3>Networking</h3>
+          <ul class="tags">
+            <li>TCP/IP</li><li>DNS</li><li>HTTP/HTTPS</li><li>OSI Model</li><li>Subnetting</li>
+          </ul>
+        </div>
+        <div class="skills__group">
+          <h3>Working with people</h3>
+          <ul class="tags">
+            <li>Communication</li><li>Leadership</li><li>Problem Solving</li><li>Team Collaboration</li><li>Time Management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="project">
+    <div class="container">
+      <p class="kicker">Project</p>
+      <h2 class="section__title">A real deployment, done the long way on purpose</h2>
+      <p class="section__sub">For my first project, I skipped Docker deliberately. I wanted to feel every manual step before reaching for a tool that hides them — so the convenience would mean something once I got there.</p>
+
+      <div class="project__panel">
+        <div class="project__stack">
+          <div class="stack__row">
+            <span class="stack__label">Application</span>
+            <span class="stack__value">Python · Flask · HTML / CSS / JavaScript front end</span>
+          </div>
+          <div class="stack__row">
+            <span class="stack__label">App server</span>
+            <span class="stack__value">Gunicorn, to handle real traffic load</span>
+          </div>
+          <div class="stack__row">
+            <span class="stack__label">Web server</span>
+            <span class="stack__value">Nginx as reverse proxy, for smooth request handling</span>
+          </div>
+          <div class="stack__row">
+            <span class="stack__label">Process management</span>
+            <span class="stack__value">Custom systemd unit, so the app survives reboots and crashes</span>
+          </div>
+          <div class="stack__row">
+            <span class="stack__label">Version control</span>
+            <span class="stack__value">Git and GitHub for the full history of the build</span>
+          </div>
+          <div class="stack__row">
+            <span class="stack__label">Infrastructure</span>
+            <span class="stack__value">AWS EC2 (t2.micro), provisioned and managed from my own terminal</span>
+          </div>
+          <div class="stack__row stack__row--note">
+            <span class="stack__label">By design</span>
+            <span class="stack__value">No Docker, no containers — manual setup first, so the next step actually saves time instead of just feeling modern</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cert">
+    <div class="container cert__inner">
+      <img src="{{ url_for('static', filename='assets/aws-badge.png') }}" alt="AWS Badge">
+      <div class="cert__text">
+        <p class="kicker">Certification</p>
+        <h3>AWS Certified Cloud Practitioner</h3>
+        <p>I worked through AWS Cloud Quest hands-on labs and earned the Cloud Practitioner training badge before sitting the official certification exam. The exam has been completed; the certificate is pending issuance.</p>
+        <a href="https://www.linkedin.com/posts/ibrahim-saad-9762563a0_aws-cloud-quest-cloud-practitioner-training-share-7468424912370663424-Kzd7" target="_blank" rel="noopener" class="cert__link">Read the write-up on LinkedIn →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience" id="experience">
+    <div class="container">
+      <p class="kicker">Experience</p>
+      <h2 class="section__title">Before infrastructure, people</h2>
+      <p class="section__sub">Two years of customer-facing work taught me things no terminal does: how to stay calm under pressure, communicate clearly, and lead a team toward a target.</p>
+
+      <ol class="timeline">
+        <li class="timeline__item">
+          <span class="timeline__date">Oct 2025 — Dec 2025</span>
+          <h3>Team Leader (Promoted Position) · Concentrix</h3>
+          <p>Led and supported a customer service team in a fast-paced environment, helping coordinate workflow and resolve issues as they came up.</p>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__date">Feb 2024 — Oct 2025</span>
+          <h3>English Cold Caller / Customer Service Representative · Concentrix</h3>
+          <p>Communicated with international clients in fluent English, built persuasion and communication skills in a target-driven environment, and handled client concerns professionally.</p>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__date">Dec 2022 — Feb 2024</span>
+          <h3>Retail Sales Assistant · Kidia Store</h3>
+          <p>Assisted customers in a children's clothing store, gave product recommendations, and learned the basics of building a good customer experience.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="education">
+    <div class="container education__inner">
+      <p class="kicker">Education</p>
+      <h3>Bachelor of Business Administration — MIS</h3>
+      <p class="education__school">Alexandria University · GPA 3.01</p>
+      <p>Management Information Systems track: a mix of marketing, accounting, organisational management and business ethics, alongside an introduction to networking and programming — the starting point for everything that came after.</p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container contact__inner">
+      <p class="kicker">Contact</p>
+      <h2 class="section__title">Open to junior DevOps and cloud opportunities</h2>
+      <p class="section__sub">Have a role, an internship, or just want to talk infrastructure — reach out, I read everything myself.</p>
+
+      <div class="contact__grid">
+        <a class="contact__card" href="mailto:ibrahim.saad.dev@gmail.com">
+          <span class="contact__label">Email</span>
+          <span class="contact__value">ibrahim.saad.dev@gmail.com</span>
+        </a>
+        <a class="contact__card" href="tel:+201066949523">
+          <span class="contact__label">Phone</span>
+          <span class="contact__value">+20 106 694 9523</span>
+        </a>
+        <a class="contact__card" href="https://github.com/ibrahimsaaddev" target="_blank" rel="noopener">
+          <span class="contact__label">GitHub</span>
+          <span class="contact__value">github.com/ibrahimsaaddev</span>
+        </a>
+        <a class="contact__card" href="https://www.linkedin.com/in/ibrahim-saad-9762563a0/" target="_blank" rel="noopener">
+          <span class="contact__label">LinkedIn</span>
+          <span class="contact__value">in/ibrahim-saad-9762563a0</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <span>© 2026 Ibrahim Saad.</span>
+    <span>Built with HTML, CSS and JavaScript.</span>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
