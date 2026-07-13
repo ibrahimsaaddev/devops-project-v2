@@ -7,6 +7,9 @@ services:
       - .:/app
     environment:
       - HF_TOKEN=${HF_TOKEN}
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
   nginx:
     image: nginx:latest
     ports:
