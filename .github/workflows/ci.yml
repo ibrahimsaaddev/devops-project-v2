@@ -39,3 +39,7 @@ jobs:
             cd /home/ubuntu/devops-project-v2
             git pull
             docker compose up --build -d
+      - name: Run Docker Container
+        run: |
+    docker exec -d web-app || true  # لو عندك أمر بيوقف القديم الأول
+    docker run -d -p 5000:5000 --name web-app -e HF_TOKEN="${{ secrets.HF_TOKEN }}" username/devops-project-v2:latest  
