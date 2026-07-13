@@ -6,7 +6,8 @@ import requests
 app = Flask(__name__)
 
 HF_TOKEN = os.getenv("HF_TOKEN")
-API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2-1"
+# غيرنا الموديل هنا لموديل FLUX الأسرع والأقوى
+API_URL = "https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell"
 headers = {"Authorization": f"Bearer {HF_TOKEN}"}
 
 if not os.path.exists(os.path.join('static', 'images')):
@@ -37,10 +38,13 @@ def generate_image():
             
             return jsonify({'success': True, 'image_url': f'/static/images/{filename}'})
         else:
-            return jsonify({'error': 'فشل الـ API في توليد الصورة، حاول مجدداً'}), 500
+            # هنا هيطبعلك في الـ Logs الأيرور الحقيقي اللي جاي من Hugging Face
+            print(f"HuggingFace API Error: {response.status_code} - {response.text}")
+            return jsonify({'error': f'API Error: {response.text}'}), 500
 
     except Exception as e:
-        return jsonify({'error': 'حدث خطأ داخلي في السيرفر'}), 500
+        print(f"Internal Python Error: {str(e)}")
+        return jsonify({'error': f'Server Exception: {str(e)}'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
