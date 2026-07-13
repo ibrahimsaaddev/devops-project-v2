@@ -2,13 +2,26 @@ import os
 import time
 from flask import Flask, render_template, request, jsonify
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util import create_urllib3_context
+
+# كلاس صايع عشان يجبر requests تستخدم بروتوكول SSL متوافق
+class SSLAdapter(HTTPAdapter):
+    def init_poolmanager(self, *args, **kwargs):
+        context = create_urllib3_context()
+        context.load_default_certs()
+        kwargs['ssl_context'] = context
+        return super(SSLAdapter, self).init_poolmanager(*args, **kwargs)
 
 app = Flask(__name__)
 
 HF_TOKEN = os.getenv("HF_TOKEN")
-# غيرنا الموديل هنا لموديل FLUX الأسرع والأقوى
 API_URL = "https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell"
-headers = {"Authorization": f"Bearer {HF_TOKEN}"}
+
+# تجهيز الـ Session وتطبيق حل الـ SSL
+session = requests.Session()
+session.mount("https://", SSLAdapter())
+session.headers.update({"Authorization": f"Bearer {HF_TOKEN}"})
 
 if not os.path.exists(os.path.join('static', 'images')):
     os.makedirs(os.path.join('static', 'images'))
@@ -27,7 +40,8 @@ def generate_image():
 
     try:
         payload = {"inputs": user_prompt}
-        response = requests.post(API_URL, headers=headers, json=payload)
+        # بنستخدم الـ session المعدلة هنا بديل requests العادية
+        response = session.post(API_URL, json=payload, timeout=30)
         
         if response.status_code == 200:
             filename = f"image_{int(time.time())}.png"
@@ -38,7 +52,6 @@ def generate_image():
             
             return jsonify({'success': True, 'image_url': f'/static/images/{filename}'})
         else:
-            # هنا هيطبعلك في الـ Logs الأيرور الحقيقي اللي جاي من Hugging Face
             print(f"HuggingFace API Error: {response.status_code} - {response.text}")
             return jsonify({'error': f'API Error: {response.text}'}), 500
 
