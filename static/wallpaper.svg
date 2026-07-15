@@ -1,0 +1,73 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e2a3d"/>
+      <stop offset="45%" stop-color="#0b3a52"/>
+      <stop offset="100%" stop-color="#081f2e"/>
+    </linearGradient>
+
+    <radialGradient id="sun" cx="18%" cy="70%" r="55%">
+      <stop offset="0%" stop-color="#bfe9ff" stop-opacity="0.22"/>
+      <stop offset="45%" stop-color="#6ee7d8" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#6ee7d8" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="glowAmber" cx="82%" cy="18%" r="45%">
+      <stop offset="0%" stop-color="#f5a623" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#f5a623" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- glass facet gradients for the floating hex mark -->
+    <linearGradient id="facetTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bff4d6"/>
+      <stop offset="100%" stop-color="#6ee7a0"/>
+    </linearGradient>
+    <linearGradient id="facetLeft" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3fb583"/>
+      <stop offset="100%" stop-color="#1f6b4c"/>
+    </linearGradient>
+    <linearGradient id="facetRight" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffd27a"/>
+      <stop offset="100%" stop-color="#f5a623"/>
+    </linearGradient>
+
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.4"/>
+    </filter>
+  </defs>
+
+  <!-- sky -->
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <rect width="1920" height="1080" fill="url(#sun)"/>
+  <rect width="1920" height="1080" fill="url(#glowAmber)"/>
+
+  <!-- flowing light ribbons, aero-style -->
+  <g fill="none" stroke="#eaf7ff" stroke-linecap="round">
+    <path d="M-100,760 C 300,880 650,560 1000,660 C 1400,780 1650,520 2020,600" stroke-opacity="0.10" stroke-width="2"/>
+    <path d="M-100,860 C 350,980 700,700 1050,790 C 1450,900 1700,660 2020,720" stroke-opacity="0.16" stroke-width="2.5"/>
+    <path d="M-100,980 C 380,1060 720,880 1080,930 C 1460,985 1720,860 2020,900" stroke-opacity="0.22" stroke-width="3"/>
+    <path d="M-100,120 C 260,60 520,180 820,110" stroke-opacity="0.07" stroke-width="1.5"/>
+  </g>
+
+  <!-- soft bokeh, lower-left -->
+  <g filter="url(#soft)" opacity="0.5">
+    <circle cx="220" cy="880" r="70" fill="#eaf7ff" opacity="0.10"/>
+    <circle cx="360" cy="960" r="34" fill="#eaf7ff" opacity="0.14"/>
+    <circle cx="150" cy="990" r="18" fill="#eaf7ff" opacity="0.18"/>
+  </g>
+
+  <!-- floating glass hexagon mark, echoing the AWS badge silhouette in brand colors -->
+  <g transform="translate(1160,430)">
+    <polygon points="0,-190 165,-95 165,95 0,190 -165,95 -165,-95"
+      fill="#0d1a20" opacity="0.35"/>
+    <!-- three facets suggesting depth, like a cut gem / cloud icon -->
+    <polygon points="0,-190 165,-95 0,0 -165,-95" fill="url(#facetTop)" opacity="0.92"/>
+    <polygon points="-165,-95 0,0 0,190 -165,95" fill="url(#facetLeft)" opacity="0.9"/>
+    <polygon points="165,-95 165,95 0,190 0,0" fill="url(#facetRight)" opacity="0.9"/>
+    <polygon points="0,-190 165,-95 165,95 0,190 -165,95 -165,-95"
+      fill="none" stroke="#eaf7ff" stroke-opacity="0.35" stroke-width="2"/>
+  </g>
+
+  <!-- terminal cursor glyph, small, bottom-right — same mark used in the topbar -->
+  <text x="1840" y="1040" font-family="JetBrains Mono, monospace" font-size="34" fill="#eaf7ff" opacity="0.18" text-anchor="end">▍</text>
+</svg>

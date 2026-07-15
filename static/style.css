@@ -141,10 +141,14 @@ button{ font-family: inherit; }
   min-height: 100vh;
   padding-top: var(--topbar-h);
   padding-bottom: var(--dock-h);
-  background:
+  background-image:
     radial-gradient(ellipse 900px 500px at 15% 8%, rgba(110,231,160,0.05), transparent 60%),
     radial-gradient(ellipse 700px 500px at 85% 85%, rgba(245,166,35,0.05), transparent 60%),
-    linear-gradient(160deg, var(--bg-desktop-2), var(--bg-desktop) 60%);
+    url("wallpaper.svg");
+  background-size: auto, auto, cover;
+  background-position: center, center, center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-attachment: fixed;
 }
 
 /* Desktop icons */
